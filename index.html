@@ -81,8 +81,11 @@
             text-decoration: none;
             transition: color .075s;
         }
-        .navbar a:hover{
+        .navbar a:not(.current):hover{
             color: #2aa198;
+        }
+        .navbar a.current{
+            border-bottom: 1px solid var(--text-color);
         }
         .nav-items{
             margin: 0;
@@ -92,6 +95,7 @@
             display: inline;
             list-style-type: none;
         }
+
         .nav-items * + *::before{
             content: '/ '
         }
@@ -138,7 +142,7 @@
                 <a href="#">martinhoffmann.me</a>
                 <ul class='nav-items'>
                     <li><a href='#'>blog</a></li>
-                    <li><a href='#'>about</a></li>
+                    <li><a href='#' class="current">about</a></li>
                     <li><a href='#'>resume</a></li>
                     <li><a href='#'>contact</a></li>
                     <li><a id="theme-switch-link" href='#' onclick='toggleTheme();return false;'>light mode</a></li>
