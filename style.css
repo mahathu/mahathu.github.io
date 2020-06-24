@@ -129,4 +129,24 @@ html.light{
         max-width: 100%;
         padding: 0 3% 2em 3%;
     }
+
+    .about-content{
+        flex-direction: column;
+    }
+}
+
+/* ABOUT PAGE */
+.about-content{
+    display: flex;
+    flex-direction: row;
+}
+.hello-ascii{
+    white-space: pre-wrap;
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin-right: 2em;
+    text-shadow: 1px 1px 2px var(--text-color);
+}
+.hello-text{
+    text-align: justify;
 }
