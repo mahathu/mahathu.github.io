@@ -1,182 +1,41 @@
 <html data-theme="dark">
     <head>
-        <script>
-            let theme = localStorage.getItem('theme');
-            if (theme == null || theme === 'dark'){
-                //Set default style
-                localStorage.setItem('theme', 'dark');
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-            else {
-                localStorage.setItem('theme', 'light');
-                document.documentElement.setAttribute('data-theme', 'light');
-            }
-        </script>
+        <script src="script_before_dom.js"></script>
 
         <link href="https://fonts.cdnfonts.com/css/tex-gyre-cursor" rel="stylesheet">
-
-        <style>
-        /*https://en.wikipedia.org/wiki/Solarized_(color_scheme)*/
-        /*
-        Base03      #002b36
-        Base02      #073642
-        Base01      #586e75
-        Base00      #657b83
-        Base0       #839496
-        Base1       #93a1a1
-        Base2       #eee8d5
-        Base3       #fdf6e3
-        Yellow      #b58900
-        Orange      #cb4b16
-        Red         #dc322f
-        Magenta     #d33682
-        Violet      #6c71c4
-        Blue        #268bd2
-        Cyan        #2aa198
-        Green       #859900
-        */
-        
-            /* 
-            --light-bg-color: #fdf6e3;
-            --light-text-color: #073642;
-            --dark-bg-color: #002b36;
-            --dark-text-color: #eee8d5; 
-            background: var(--dark-bg-color);
-            color: var(--dark-text-color);
-            */
-        html, html[data-theme="dark"]{
-            background: #002b36;
-            --text-color: #eee8d5;
-        }
-        html[data-theme="light"]{
-            background: #fdf6e3;
-            --text-color: #073642;
-        }
-
-        body{
-            box-sizing: border-box;
-            color: var(--text-color);
-            margin: 0 auto;
-            max-width: 72ch;
-            font-family: 'TeXGyreCursor',monospace;
-            font-size: 90%;
-        }
-        body p{
-            margin: 0 0 1em 0;
-        }
-
-        .navbar-wrapper{
-            margin: 2em 0 3em 0;
-        }
-        .navbar-wrapper::before, .navbar-wrapper::after{
-            content: '========================================================================';
-        }
-
-        .navbar{
-            display: flex;
-            justify-content: space-between;
-            line-height: 2em;
-        }
-        .navbar a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color .075s;
-        }
-        .navbar a:not(.current):hover{
-            color: #2aa198;
-        }
-        .navbar a.current{
-            border-bottom: 1px solid var(--text-color);
-        }
-        .nav-items{
-            margin: 0;
-            padding: 0;
-        }
-        .nav-items>li{
-            display: inline;
-            list-style-type: none;
-        }
-
-        .nav-items * + *::before{
-            content: '/ '
-        }
-
-        .nav-items li:last-child a{
-            color: #b58900;
-        }
-
-        /* LIGHT MODE */
-        html.light{
-            background: var(--light-bg-color);
-            color: var(--light-text-color);
-        }
-
-        /* MOBILE */
-        @media screen and (orientation: portrait) {
-            .navbar{
-                flex-direction: column;
-            }
-            .nav-items li::before{
-                content: '/'
-            }
-            .nav-items>li{
-                display: block;
-            }
-            .navbar-wrapper::before, .navbar-wrapper::after{
-                content: '===============================================';
-            }
-            .navbar-wrapper{
-                margin: 1em 0 1.5em 0;
-                overflow: hidden;
-            }
-            body{
-                max-width: 100%;
-                padding: 0 6px;
-            }
-        }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
         <div class='navbar-wrapper'>
             <div class='navbar'>
-                <a href="#">martinhoffmann.me</a>
-                <ul class='nav-items'>
-                    <li><a href='#'>blog</a></li>
-                    <li><a href='#' class="current">about</a></li>
-                    <li><a href='#'>resume</a></li>
-                    <li><a href='#'>contact</a></li>
-                    <li><a id="theme-switch-link" href='#' onclick='toggleTheme();return false;'>light mode</a></li>
+                <span>martinhoffmann.me</span>
+                <ul id="nav-btns" class='nav-items'>
+                    <!-- <li><button data-target="blog" onclick='navBtnClicked(this);'>blog</button></li> -->
+                    <li><button onclick='navigateTo("about");'>about</button></li>
+                    <li><button onclick='navigateTo("resume");'>resume</button></li>
+                    <li><button onclick='navigateTo("contact");'>contact</button></li>
+
+                    <li><button id="theme-switch-link" onclick='toggleTheme();this.blur();return false;'>light mode</button></li>
                 </ul>
             </div>
         </div>
 
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+        <div id="about" class="pg-content">
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div id="resume" class="pg-content">
+            <h1>Resume:)</h1>
+            <ul>
+                <li>abc</li>
+                <li>abc</li>
+                <li>abc</li>
+            </ul>
+        </div>
+        <div id="contact" class="pg-content">
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
 
-        <script>
-            function toggleTheme(){
-                let currentTheme = localStorage.getItem('theme');
-                let themeSwitchLink = document.getElementById('theme-switch-link');
-                switch (currentTheme) {
-                    case 'dark':
-                        localStorage.setItem('theme', 'light');
-                        document.documentElement.setAttribute('data-theme', 'light');
-                        themeSwitchLink.innerHTML = "dark mode";
-                        break;
-
-                    case 'light':
-                        localStorage.setItem('theme', 'dark');
-                        document.documentElement.setAttribute('data-theme', 'dark');
-                        themeSwitchLink.innerHTML = "light mode";
-                        break;
-
-                    default:
-                        console.log("Browser apparently does not support localStorage.");
-                }
-            }
-        </script>
+        <script src="script.js"></script>
     </body>
 </html>

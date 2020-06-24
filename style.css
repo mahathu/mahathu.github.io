@@ -1,0 +1,132 @@
+/*https://en.wikipedia.org/wiki/Solarized_(color_scheme)*/
+/*
+Base03      #002b36
+Base02      #073642
+Base01      #586e75
+Base00      #657b83
+Base0       #839496
+Base1       #93a1a1
+Base2       #eee8d5
+Base3       #fdf6e3
+Yellow      #b58900
+Orange      #cb4b16
+Red         #dc322f
+Magenta     #d33682
+Violet      #6c71c4
+Blue        #268bd2
+Cyan        #2aa198
+Green       #859900
+*/
+
+/* 
+--light-bg-color: #fdf6e3;
+--light-text-color: #073642;
+--dark-bg-color: #002b36;
+--dark-text-color: #eee8d5; 
+background: var(--dark-bg-color);
+color: var(--dark-text-color);
+*/
+html, html[data-theme="dark"]{
+    background: #002b36;
+    --text-color: #eee8d5;
+    --default-font: 'TeXGyreCursor',monospace;
+}
+html[data-theme="light"]{
+    background: #fdf6e3;
+    --text-color: #073642;
+}
+
+body{
+    box-sizing: border-box;
+    color: var(--text-color);
+    margin: 0 auto;
+    max-width: 72ch;
+    font-family: var(--default-font);
+    font-size: 90%;
+}
+body p{
+    margin: 0 0 1em 0;
+}
+
+button{
+    cursor: pointer;
+}
+
+.navbar-wrapper{
+    margin: 2em 0 3em 0;
+}
+.navbar-wrapper::before, .navbar-wrapper::after{
+    content: '========================================================================';
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    line-height: 2em;
+}
+.navbar button{
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color .075s;
+    border: none;
+    background: none;
+    padding: 0;
+    font-family: var(--default-font);
+}
+.navbar button:not(.current):hover{
+    color: #2aa198;
+}
+.navbar button.current{
+    border-bottom: thin dashed var(--text-color);
+    cursor: default;
+}
+.nav-items{
+    margin: 0;
+    padding: 0;
+}
+.nav-items>li{
+    display: inline;
+    list-style-type: none;
+}
+
+.nav-items * + *::before{
+    content: '/ '
+}
+
+.nav-items li:last-child button{
+    color: #b58900;
+}
+
+.pg-content{
+    display: none;
+}
+
+/* LIGHT MODE */
+html.light{
+    background: var(--light-bg-color);
+    color: var(--light-text-color);
+}
+
+/* MOBILE */
+@media screen and (orientation: portrait) {
+    .navbar{
+        flex-direction: column;
+    }
+    .nav-items li::before{
+        content: '/'
+    }
+    .nav-items>li{
+        display: block;
+    }
+    .navbar-wrapper::before, .navbar-wrapper::after{
+        content: '===============================================';
+    }
+    .navbar-wrapper{
+        margin: 1em 0 1.5em 0;
+        overflow: hidden;
+    }
+    body{
+        max-width: 100%;
+        padding: 0 3% 2em 3%;
+    }
+}
