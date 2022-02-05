@@ -1,53 +1,21 @@
-<html data-theme="dark">
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <script src="script_before_dom.js"></script>
-
-        <link href="https://fonts.cdnfonts.com/css/tex-gyre-cursor" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width,initial-scale=1'>
+        <style>
+            body{
+                font-family: monospace;
+                font-size: 1.2em;
+            }
+        </style>
     </head>
 
     <body>
-        <div class='navbar-wrapper'>
-            <div class='navbar'>
-                <span>martinhoffmann.me</span>
-                <ul id="nav-btns" class='nav-items'>
-                    <!-- <li><button data-target="blog" onclick='navBtnClicked(this);'>blog</button></li> -->
-                    <li><button onclick='navigateTo("about");'>about</button></li>
-                    <li><button onclick='navigateTo("resume");'>resume</button></li>
-                    <li><button onclick='navigateTo("contact");'>contact</button></li>
-
-                    <li><button id="theme-switch-link" onclick='toggleTheme();this.blur();return false;'>light mode</button></li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="about" class="pg-content"><div class="about-content">
-            <div class='hello-ascii'>
- _______ 
-< hello >
- ------- 
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-            </div>
-            <p class='hello-text'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        </div></div>
-        
-        <div id="resume" class="pg-content">
-            <h1>Resume:)</h1>
-            <ul>
-                <li>abc</li>
-                <li>abc</li>
-                <li>abc</li>
-            </ul>
-        </div>
-
-        <div id="contact" class="pg-content">
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        </div>
-
-        <script src="script.js"></script>
+        <ul>
+            <li>View my <a href='/resume_2022.pdf'>resume</a></li>
+            <li>Check out my <a href='https://github.com/mahathu'>GitHub</a></li>
+            <li>Play <a href='/adk'>snake</a></li>
+        </ul>
     </body>
 </html>
